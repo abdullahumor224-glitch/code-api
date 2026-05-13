@@ -107,7 +107,7 @@ Trader Piggy
 
 ---
 
-## Font Awesome Icons (171 icons)
+## Font Awesome Icons (178 icons)
 
 Use with `fa-solid`, `fa-regular`, or `fa-duotone` prefix. Only use these when no Bloxd-native icon fits.
 
@@ -159,6 +159,7 @@ fa-solid fa-edit
 fa-solid fa-ellipsis
 fa-solid fa-ellipsis-h
 fa-solid fa-exclamation
+fa-solid fa-exclamation-triangle
 fa-solid fa-expand
 fa-solid fa-external-link
 fa-solid fa-eye
@@ -188,6 +189,8 @@ fa-solid fa-hand-back-point-up
 fa-solid fa-hand-fist
 fa-solid fa-hand-holding-medical
 fa-solid fa-hand-point-left
+fa-solid fa-hand-wave
+fa-solid fa-hands-clapping
 fa-solid fa-hat-santa
 fa-solid fa-hat-witch
 fa-solid fa-heart
@@ -196,6 +199,7 @@ fa-solid fa-history
 fa-solid fa-hourglass-clock
 fa-solid fa-icons
 fa-solid fa-image
+fa-solid fa-image-slash
 fa-solid fa-info-circle
 fa-solid fa-joystick
 fa-solid fa-layer-group
@@ -216,6 +220,7 @@ fa-solid fa-mouse
 fa-solid fa-music
 fa-solid fa-navicon
 fa-solid fa-palette
+fa-solid fa-party-horn
 fa-solid fa-paste
 fa-solid fa-pen
 fa-solid fa-pen-field
@@ -259,6 +264,7 @@ fa-solid fa-tachometer-alt-fast
 fa-solid fa-terminal
 fa-solid fa-trash-alt
 fa-solid fa-trash-can
+fa-solid fa-triangle-exclamation
 fa-solid fa-trophy
 fa-solid fa-tshirt
 fa-solid fa-up-from-bracket
@@ -280,6 +286,7 @@ fa-solid fa-volume-down
 fa-solid fa-volume-low
 fa-solid fa-volume-medium
 fa-solid fa-volume-slash
+fa-solid fa-warning
 fa-solid fa-wrench
 fa-solid fa-x
 fa-solid fa-zap

@@ -171,6 +171,7 @@ Snowball
 Snowball Launcher
 Pebble
 Reinforced Pebble
+Bullet
 Ball
 Reinforced Ball
 Moonstone Orb
@@ -398,10 +399,20 @@ Striker-12
 Striker-12|RequiresAmmo
 VSR
 VSR|RequiresAmmo
+DMR
+DMR|RequiresAmmo
 Minigun
 Minigun|RequiresAmmo
 FMR
 FMR|RequiresAmmo
+SKAR
+SKAR|RequiresAmmo
+Block-19
+Block-19|RequiresAmmo
+Mini Izu
+Mini Izu|RequiresAmmo
+GPMG
+GPMG|RequiresAmmo
 Gold Coin
 Updraft
 Snowdash

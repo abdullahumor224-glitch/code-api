@@ -21,7 +21,7 @@ onPlayerDamagingMeshEntity onPlayerBreakMeshEntity onPlayerUsedThrowable
 onPlayerThrowableHitTerrain onTouchscreenActionButton onTaskClaimed
 onChunkLoaded onPlayerRequestChunk onItemDropCreated
 onPlayerStartChargingItem onPlayerFinishChargingItem onPlayerFinishQTE
-onPlayerBoughtShopItem doPeriodicSave
+onPlayerToggledShopMenu onPlayerBoughtShopItem doPeriodicSave
 
 To use a callback, just assign a function to it in the world code!
 tick = () => {}			 or			 function tick() {}
@@ -1293,6 +1293,22 @@ Called when a player's thrown projectile hits the terrain
 | playerId | `PlayerId` | The id of the player that threw the throwable item |
 | throwableName | `ThrowableItem` | The name of the throwable item |
 | thrownEntityId | `EntityId` | The id of the entity which hit the terrain |
+
+
+    
+
+ 
+
+
+
+## onPlayerToggledShopMenu
+Called when a player opens or closes the shop menu
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` | The id of the player whose shop menu changed |
+| isOpen | `boolean` | Whether the shop menu is now open |
 
 
     

@@ -246,7 +246,7 @@ type ShopItemUserInput =
     | { type: "number"; placeholderText?: string; initialValue?: string }
     | {
             type: "dropdown"
-            dropdownOptions: readonly (string | { option: string; cost: number })[]
+            dropdownOptions: (string | { option: string; cost: number })[]
             shouldResetSelectionOnOptionsChange?: boolean // Defaults to false. If true, the selection will reset to the first option when dropdownOptions changes.
             initialValue?: string
       }
@@ -349,11 +349,12 @@ type NodeAnimationSchema = {
     timeline: AnimationTimelineSchema
 }
 
-type AnimationTimelineSchema = readonly KeyframeSchema[]
+type AnimationTimelineSchema = KeyframeSchema[]
 
 type KeyframeSchema = {
     timeFraction: number
     rotation?: LerpPointSchema // Rotations are assumed to be in radians.
+    position?: LerpPointSchema // Position offsets in mesh-local units; (0, 0, 0) means the node's rest pose.
 }
 
 /**
@@ -400,6 +401,7 @@ type BlockbenchBonesAnimationSchema = Record<NodeName, BlockbenchBoneAnimationSc
 
 type BlockbenchBoneAnimationSchema = {
     rotation?: BlockbenchAnimationTimelineSchema // Blockbench rotations are in degrees.
+    position?: BlockbenchAnimationTimelineSchema // Blockbench position offsets in mesh-local units; rest pose is (0, 0, 0).
 }
 
 type BlockbenchAnimationTimelineSchema = Point | Record<TimestampString, BlockbenchAnimationFrameSchema>

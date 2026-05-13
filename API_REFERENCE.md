@@ -1,5 +1,21 @@
 # API Reference
 
+## addCustomKillfeedMessage
+Add a custom killfeed message to the killfeed
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| killer | ` { eId: EntityId } \| { name: string; colour: string } ` | The entity ID or a custom name and colour for the killer |
+| victim | ` { eId: EntityId } \| { name: string; colour: string } ` | The entity ID or a custom name and colour for the victim |
+| withItem | `string` | The item used |
+
+
+
+
+
+ 
+
 ## addFollowingEntityToPlayer
 Add following entity to player
 
@@ -40,13 +56,15 @@ an id that can be passed to deleteQTE
  
 
 ## animateEntity
-Animates the given entity.
+Animates the given entity. Pass `null` for `animationSchema` to stop the entity's current animation (the
+
+`initialTimeFraction` and `animationSpeed` arguments are ignored in that case).
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | entityId | `EntityId` |  |
-| animationSchema | `AnimationSchema \| BlockbenchAnimationSchema` |  |
+| animationSchema | `AnimationSchema \| BlockbenchAnimationSchema \| null` |  |
 | initialTimeFraction | `number` |  |
 | animationSpeed | `number` |  |
 
@@ -161,7 +179,7 @@ Make it as if hittingEId hit hitEId
 
  
 
-
+whether the attack damaged the lifeform
 
  
 
@@ -375,7 +393,7 @@ Send a message to everyone
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | message | `string \| CustomTextStyling` | The text contained within the message. Can use `Custom Text Styling`. |
-| style | ` { fontWeight?: number \| string; color?: string } ` | An optional style argument. Can contain values for fontWeight and color of the message. style is ignored if message uses custom text styling (i.e. is not a string). |
+| style | ` { fontWeight?: number \| string; color?: string; colour?: string } ` | An optional style argument. Can contain values for fontWeight and color of the message. style is ignored if message uses custom text styling (i.e. is not a string). |
 
 
 
@@ -603,6 +621,29 @@ Configure a shop category for a specific player.
 
  
 
+## copyChunk
+Copies chunk from one position to another.
+
+A good use case for this is storing 'template' chunks that can be continuously copied to a new position.
+
+In order to reset an area to the template, e.g. resetting a session-based game.
+
+
+
+NOTE: Does nothing if the source chunk is not loaded.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| fromPos | `number[]` | A block coordinate within the chunk to copy from. |
+| toPos | `number[]` | A block coordinate within the chunk to copy to. |
+
+
+
+
+
+ 
+
 ## createItemDrop
 Create a dropped item.
 
@@ -686,6 +727,13 @@ Will replace any overrides this player already has for the same item.
 
  
 
+## deleteAllItems
+Deletes all items dropped in the world
+
+
+
+ 
+
 ## deleteAllLobbyDbValues
 Deletes all database values that are saved per lobby.
 
@@ -741,7 +789,7 @@ Delete a mesh entity
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| eId | `EntityId` | Returns whether the api successfully deleted the meshEntity |
+| eId | `EntityId` |  |
 
 
 
@@ -750,7 +798,7 @@ Delete a mesh entity
 
  
 
-
+whether the api successfully deleted the meshEntity
 
  
 
@@ -849,6 +897,46 @@ Edit the crafting recipes for a player.
 | recipesForItem | `RecipesForItem` |  |
 
 
+
+
+
+ 
+
+## findItem
+Finds the index of a particular item in a player's inventory.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| itemName | `ItemName` |  |
+
+
+
+### Returns:
+`PNull<number>`
+
+ 
+
+
+
+ 
+
+## findStandardChestItem
+Find the index of a particular item in a standard chest
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| chestPos | `number[]` |  |
+| itemName | `ItemName` |  |
+
+
+
+### Returns:
+`PNull<number>`
+
+ 
 
 
 
@@ -1115,6 +1203,26 @@ Returns the current default value for a mob setting.
 
  
 
+## getEffectLevel
+Get the level of an effect on a lifeform, or 0 if they don't have it.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| lifeformId | `LifeformId` |  |
+| name | `string` |  |
+
+
+
+### Returns:
+`number`
+
+ 
+
+
+
+ 
+
 ## getEffects
 Get all the effects currently applied to a lifeform.
 
@@ -1356,6 +1464,44 @@ number
 
  
 
+## getItemDropName
+Gets the item name of a dropped item
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| itemEId | `EntityId` | The ID of the dropped item from createItemDrop |
+
+
+
+### Returns:
+`PNull<ItemName>`
+
+ 
+
+
+
+ 
+
+## getItemIDsOverlappingWithPlayer
+Returns all items overlapping with the given player
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+
+
+
+### Returns:
+`EntityId[]`
+
+ 
+
+the overlapping item entity IDs
+
+ 
+
 ## getItemSlot
 Get the item at a specific index
 
@@ -1487,6 +1633,27 @@ Gets the current AI state for the given mob.
  
 
 
+
+ 
+
+## getMobDbId
+Gets the persistent database ID for the given mob.
+
+This can be useful for reasoning about mobs that have been loaded from the database, such as owned mobs.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| mobId | `MobId` | The ID of the mob from spawnMob |
+
+
+
+### Returns:
+`PNull<MobDbId>`
+
+ 
+
+The persistent database ID for the mob, or null if the mob is not persistent
 
  
 
@@ -2055,12 +2222,33 @@ Returns the amount of item added to the chest.
  
 
 ## hasActiveQTE
-Returns whether the player has any qteRequests
+Check whether the player has any qteRequests
 
 ### Parameters:
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
+
+
+
+### Returns:
+`boolean`
+
+ 
+
+
+
+ 
+
+## hasEffect
+Check if a lifeform has an effect.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| lifeformId | `LifeformId` |  |
+| name | `string` |  |
+| atOrAboveLevel | `number` | Checks whether the effect is at or above the given level |
 
 
 
@@ -2349,6 +2537,23 @@ Open the shop UI for a player
 
  
 
+## passifyHostility
+Clears any aggro the mob has towards the given lifeform.
+
+If the mob is currently chasing or running away from it, this also transitions the mob back to idle.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| mobId | `MobId` |  |
+| targetLifeformId | `LifeformId` |  |
+
+
+
+
+
+ 
+
 ## playClientPredictedSound
 See documentation for api.playSound
 
@@ -2431,6 +2636,20 @@ Play particle effect on all clients, or only on some clients if clientPredictedB
 | volume | `number` | 0-1. If it's too quiet and volume is 1, normalise your sound in audacity |
 | rate | `number` | The speed of playback. Also affects pitch. 0.5-4. Lower playback = lower pitch Good for varying the sound. E.g. item pickup sound has a random rate between 1 and 1.5. |
 | posSettings | ` { playerIdOrPos: PlayerId \| number[] maxHearDist?: number refDistance?: number } ` | : PlayerId \| number[], maxHearDist: number, refDistance: number} playerIdOrPos: The player the sound originates from, or the position of the sound maxHearDist: sound is not played if player is further than this. Default 15 refDistance: higher means the sound decreases less in volume with distance. Default 3. Hitting is 4. Guns are 10 |
+
+
+
+
+
+ 
+
+## preventFallDamageNextGrounding
+Prevents the player from taking fall damage next time they land on the ground
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
 
 
 
@@ -2553,6 +2772,23 @@ Remove an amount of item from a player's inventory
 
  
 
+## removeItemNameFromStandardChest
+Remove an amount of item from a standardChest inventory
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| chestPos | `number[]` |  |
+| itemName | `ItemName` |  |
+| amount | `number` |  |
+| playerId | `PlayerId` | The player who is interacting with the chest. |
+
+
+
+
+
+ 
+
 ## removeMiddleScreenBar
 If there is any current middle screen bar running, this will hide it
 
@@ -2560,6 +2796,23 @@ If there is any current middle screen bar running, this will hide it
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
+
+
+
+
+
+ 
+
+## resetCanChangeBlock
+Remove any previous can/cant change block settings for a player at a specific co-ordinate
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| x | `number` |  |
+| y | `number` |  |
+| z | `number` |  |
 
 
 
@@ -2591,6 +2844,21 @@ Remove any previous can/cant change block type settings for a player
 |-----------|------|-------------|
 | playerId | `PlayerId` |  |
 | blockName | `BlockName` |  |
+
+
+
+
+
+ 
+
+## resetCanPickUpItem
+Reset a player's ability to pick up an item. itemId returned by createItemDrop
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| playerId | `PlayerId` |  |
+| itemId | `EntityId` |  |
 
 
 
@@ -3366,6 +3634,22 @@ Set many of a player's other-entity settings for a specific entity.
 
  
 
+## setOtherEntitySettingToDefault
+Reset a player's other-entity setting for a specific entity to the game's default value.
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| relevantPlayerId | `PlayerId` |  |
+| targetedEntityId | `EntityId` |  |
+| settingName | `Setting` |  |
+
+
+
+
+
+ 
+
 ## setPlayerDbValue
 Sets a database value that is saved per player. This persists between sessions and between lobbies for custom games.
 
@@ -3647,6 +3931,20 @@ Update a mesh entity. If used on a non-mesh entity, will do nothing.
 | eId | `EntityId` |  |
 | type | `MeshType` |  |
 | opts | `MeshEntityOpts[MeshType]` |  |
+
+
+
+
+
+ 
+
+## updateMeshParticleSystems
+Updates the particle systems of multiple mesh entities at specified nodes
+
+### Parameters:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| updates | `MeshParticleSystemUpdates` |  |
 
 
 

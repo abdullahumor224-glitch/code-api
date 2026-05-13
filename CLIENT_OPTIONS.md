@@ -124,6 +124,20 @@ Whether to allow the player to strafe and conserve momentum while airborne.
 
 
 
+## ambientLightColourOverride
+
+**Type:** `string`
+
+**Default:** `null`
+
+ 
+
+Ambient (absence of sky light) colour override - hex string e.g. #ffffff.
+
+ 
+
+
+
 ## arrowPotionEffectDuration
 
 **Type:** `number`
@@ -742,6 +756,26 @@ Duration in ms to animate/transition to the forced camera direction (when you ch
 
 
 
+## groundArrowPath
+
+**Type:** ` { target: [number, number, number]; colour?: string; } `
+
+**Default:** `null`
+
+ 
+
+Renders a terrain-following strip of animated chevron arrows on the ground from this player to the target position.
+
+ The arrow path is not visible to other players.
+
+ Configure a target position with `target: [x, y, z]` to show, or null to hide.
+
+ Optional `colour` is a hex string like #ffaa00 (default is white).
+
+ 
+
+
+
 ## groundFrictionScale
 
 **Type:** `number`
@@ -950,7 +984,8 @@ When null, just use the player's graphics setting. When set, forces lighting on 
 
 **Type:** `LobbyLeaderboardInfo`
 
-**Default:** ```ts
+**Default:** 
+```ts
 {
 	name: {
 		displayName: "Name",

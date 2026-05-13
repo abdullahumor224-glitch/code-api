@@ -169,7 +169,7 @@ Here is the full list of available mob settings:
 
 ## burstAttackInfo
 
-**Type:** ` { burstAttackIntervals: readonly number[]; } `
+**Type:** ` { burstAttackIntervals: number[]; } `
 
 **Example:** `null`
 
@@ -191,7 +191,8 @@ Here is the full list of available mob settings:
 
 **Type:** `MobCombatTetherCombatInfo`
 
-**Example:** ```ts
+**Example:** 
+```ts
 {
 	range: 11,
 	particleOpts: {
@@ -215,7 +216,8 @@ Here is the full list of available mob settings:
 
 **Type:** `MobEvadeInfo`
 
-**Example:** ```ts
+**Example:** 
+```ts
 {
 	probability: 0.6,
 	minAngle: Math.PI * 0.35,
@@ -382,7 +384,8 @@ Here is the full list of available mob settings:
 
 **Type:** ` { itemName: string; probabilityOfDrop: number; dropMinAmount: number; dropMaxAmount: number; applyBurstImpulseToDrop?: boolean; }[] `
 
-**Example:** ```ts
+**Example:** 
+```ts
 [
 	{
 		itemName: "Raw Porkchop",
@@ -431,7 +434,8 @@ Here is the full list of available mob settings:
 
 **Type:** `MobPetInfo`
 
-**Example:** ```ts
+**Example:** 
+```ts
 {
 friendshipPoints: 0,
 lastFedAt: null,
@@ -441,6 +445,16 @@ superlikedFoodKnown: false,
 bonusesGained: [],
 	}
 ```
+
+ 
+
+
+
+## rangedAttackInaccuracy
+
+**Type:** `number`
+
+**Example:** `0`
 
  
 
@@ -528,7 +542,7 @@ bonusesGained: [],
 
 ## secondaryBurstAttackInfo
 
-**Type:** ` { burstAttackIntervals: readonly number[]; } `
+**Type:** ` { burstAttackIntervals: number[]; } `
 
 **Example:** `null`
 
@@ -566,91 +580,75 @@ bonusesGained: [],
 
 
 
-/**
- * @type {MobTameInfo}
- */
-tameInfo = {
-    tameItemName: [
-        "Raw Porkchop",
-        "Raw Beef",
-        "Raw Mutton",
-        "Raw Venison",
-        "Cooked Porkchop",
-        "Steak",
-        "Cooked Mutton",
-        "Cooked Venison"
-    ],
-    probabilityOfTame: 0.32,
-    isSaddleable: false,
-    supportsFriendship: true,
-    likedFoods: [
-        "Raw Porkchop",
-        "Raw Beef",
-        "Raw Mutton",
-        "Raw Venison",
-        "Cooked Porkchop",
-        "Steak",
-        "Cooked Mutton",
-        "Cooked Venison",
-        "Banana",
-        "Baked Potato",
-        "Rotten Brain"
-    ],
-    neutralFoods: [
-        "Catnip",
-        "Pumpkin Pie",
-        "Bowl of Cranberries",
-        "Watermelon Slice",
-        "Gold Watermelon Slice",
-        "Bread",
-        "Rotten Flesh",
-        "Mushroom Soup",
-        "Plum",
-        "Carrot",
-        "Beetroot",
-        "Raw Potato"
-    ],
-    dislikedFoods: [
-        "Apple",
-        "Wheat",
-        "Pear",
-        "Cherry",
-        "Bowl of Rice",
-        "Melon Slice",
-        "Gold Melon Slice",
-        "Chili Pepper",
-        "Cracked Coconut"
-    ],
-    foodItemsWithEffects: [
-        {
-            itemName: "Catnip",
-            effects: [
-                {
-                    name: "Speed",
-                    duration: 30000,
-                    level: 1
-                },
-                {
-                    name: "Damage",
-                    duration: 30000,
-                    level: 1
-                }
-            ]
-        }
-    ],
-    guaranteedDrop: "Caught Fish",
-    commonDrops: [
-        "Poop",
-        "Wheat Seeds"
-    ],
-    levelUpBonuses: {
-        1: "Renaming",
-        2: "Special Drops",
-        3: "Damage +",
-        4: "Painting",
-        5: "Poison Claws"
-    }
+## tameInfo
+
+**Type:** `PNull<MobTameInfo>`
+
+**Example:** ```ts
+{
+  "tameItemName": [
+    "Apple"
+  ],
+  "probabilityOfTame": 1,
+  "isSaddleable": false,
+  "supportsFriendship": true,
+  "likedFoods": [
+    "Plum",
+    "Cracked Coconut",
+    "Pumpkin Pie",
+    "Bowl of Rice",
+    "Melon Slice",
+    "Gold Melon Slice",
+    "Corn",
+    "Bowl of Cranberries",
+    "Mushroom Soup",
+    "Chili Pepper",
+    "Carrot",
+    "Beetroot",
+    "Raw Potato",
+    "Baked Potato"
+  ],
+  "neutralFoods": [
+    "Watermelon Slice",
+    "Gold Watermelon Slice",
+    "Apple",
+    "Wheat",
+    "Pear",
+    "Cherry",
+    "Bread"
+  ],
+  "dislikedFoods": [
+    "Raw Porkchop",
+    "Raw Beef",
+    "Raw Mutton",
+    "Raw Venison",
+    "Cooked Porkchop",
+    "Steak",
+    "Cooked Mutton",
+    "Cooked Venison",
+    "Rotten Flesh",
+    "Banana",
+    "Rotten Brain"
+  ],
+  "guaranteedDrop": "Truffle",
+  "commonDrops": [
+    "Poop",
+    "Wheat Seeds"
+  ],
+  "levelUpBonuses": {
+    "1": "Renaming",
+    "2": "Special Drops",
+    "3": "Double Poop",
+    "4": "Painting",
+    "5": "Feed Aura"
+  }
 }
+```
+
+Taming configuration for this mob type. Includes tame items, probability, saddle support, food preferences, drops, and level-up bonuses. See `mobTameInfoDefaults` for per-mob defaults. `null` for non-tameable mobs.
+
+ 
+
 
 ## territoryRadius
 
@@ -686,7 +684,8 @@ tameInfo = {
 
 **Type:** `MobWarpTargetSpecialAttackInfo`
 
-**Example:** ```ts
+**Example:** 
+```ts
 {
 	cooldown: 20_000,
 	range: 32,

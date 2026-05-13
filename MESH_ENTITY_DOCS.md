@@ -195,7 +195,7 @@ api.updateMeshEntity(boxId, "Box", {
  * Delete a mesh entity
  *
  * @param {EntityId} eId
- * @returns {boolean}
+ * @returns {boolean} - whether the api successfully deleted the meshEntity
  */
 deleteMeshEntity(eId)
 ```

@@ -59,6 +59,16 @@ setOtherEntitySettings(relevantPlayerId, targetedEntityId, settingsObject)
  * @returns {OtherEntitySettings[Setting]}
  */
 getOtherEntitySetting(relevantPlayerId, targetedEntityId, settingName)
+
+/**
+ * Reset a player's other-entity setting for a specific entity to the game's default value.
+ *
+ * @param {PlayerId} relevantPlayerId
+ * @param {EntityId} targetedEntityId
+ * @param {Setting} settingName
+ * @returns {void}
+ */
+setOtherEntitySettingToDefault(relevantPlayerId, targetedEntityId, settingName)
 ```
 
 Here is the full list of available entity settings:
@@ -195,6 +205,8 @@ The name tag info of the player:
      subtitle?: StyledText[]
 
      subtitleBackgroundColor?: string
+
+     minLighting?: number
 
  }
 

@@ -1,4 +1,4 @@
-# Block Names (1116 blocks)
+# Block Names (1120 blocks)
 #
 # Each block name listed below is the ROOT block - use it exactly as shown (no suffix).
 # Some blocks also have meta variants, indicated by codes in brackets.
@@ -1142,3 +1142,7 @@ Ghost Chest
 Ghost Lucky Block
 Ghost Mystery Block
 Football
+Pet Lucky Block
+Glowing Mushroom [H,R]
+Crystal [H,R]
+Slime Trail [R]

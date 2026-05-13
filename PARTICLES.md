@@ -2,6 +2,7 @@
 
 These are the strings you can give to functions that take a particle effect `texture` as input:
 
+`arrow`
 `bubble`
 `critical_hit`
 `drift`
