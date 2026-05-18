@@ -306,3 +306,27 @@ fa-solid fa-brands fa-apple
 fa-solid fa-brands fa-discord
 fa-solid fa-brands fa-youtube
 ```
+
+
+api.setTargetedPlayerSettingForEveryone(
+    myId,
+    "nameTagInfo",
+    {
+        content: [
+                        {
+                icon:"wrench",
+                mainRGB: "gray",
+                chatTag: [],
+            },
+            {      
+                icon:"zap",
+                mainRGB: "darkorange",
+                chatTag: [],
+            },
+            {
+                str: api.getEntityName(playerId),
+            },
+        ],
+    }, 
+    true,
+) 
