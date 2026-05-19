@@ -1146,3 +1146,5 @@ Pet Lucky Block
 Glowing Mushroom [H,R]
 Crystal [H,R]
 Slime Trail [R]
+67 Base Projectile
+67 Boosted Projectile
