@@ -997,3 +997,5 @@ Stuffed Pepper
 Sushi
 Tomato
 Vegetable Soup
+67 Base Projectile
+67 Boosted Projectile
