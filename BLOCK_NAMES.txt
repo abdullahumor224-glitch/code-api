@@ -1146,3 +1146,6 @@ Pet Lucky Block
 Glowing Mushroom [H,R]
 Crystal [H,R]
 Slime Trail [R]
+Overgrown Grass Block
+Overgrown Jungle Grass Block
+Overgrown Pine Grass Block
